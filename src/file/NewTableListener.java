@@ -6,6 +6,8 @@ package file;
 import constants.PageConst;
 import tablemodel.StudentModel;
 import tablemodel.StudentTableModel;
+import tableview.MainPanel;
+import tableview.PageWork;
 import tableview.StudentTableView;
 
 import javax.swing.BoxLayout;
@@ -22,6 +24,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class NewTableListener implements ActionListener {
@@ -37,63 +40,12 @@ public class NewTableListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       if (e.getActionCommand().equals("New table")){
           jtbMain.setVisible(true);
-          StudentTableModel tableModel = new StudentTableModel();
-          for (int i = 0; i < 10; i++) {
-              StudentModel currentStudent = new StudentModel();
-              currentStudent.setFirstName("Misha");
-              currentStudent.setSecondName("Kovalev");
-              currentStudent.setThirdName("Vladimirivich");
-              currentStudent.setDateBirth(new GregorianCalendar(1995, GregorianCalendar.NOVEMBER, 23));
-              currentStudent.setFootballTeamName("GT");
-              currentStudent.setFacultyName("FITU");
-              currentStudent.setSquad(1);
-              currentStudent.setPosition(1);
-              tableModel.addStudent(currentStudent);
-          }
-
+          StudentTableModel tableModel = new StudentTableModel(new ArrayList<StudentModel>());
           StudentTableView tableView = new StudentTableView(tableModel);
           JScrollPane scrollpane = new JScrollPane(tableView);
-
-          JPanel mainPage = new JPanel(new BorderLayout());
+          PageWork pageWork = new PageWork(tableView);
+          MainPanel mainPage = new MainPanel(tableView,pageWork);
           mainPage.add(scrollpane, BorderLayout.CENTER);
-
-          JPanel pageWork = new JPanel(new FlowLayout());
-          JToolBar jtbPage = new JToolBar("Work with page", JToolBar.HORIZONTAL);
-          ImageIcon imFirst = new ImageIcon(PageConst.FIRST_TOOLBAR_PAGE);
-          ImageIcon imPrevious = new ImageIcon(PageConst.PREVIOUS_TOOLBAR_PAGE);
-          ImageIcon imNext = new ImageIcon(PageConst.NEXT_TOOLBAR_PAGE);
-          ImageIcon imLast = new ImageIcon(PageConst.LAST_TOOLBAR_PAGE);
-
-          JButton jbFirst = new JButton(imFirst);
-          jbFirst.setActionCommand("First page");
-          JButton jbPrevious = new JButton(imPrevious);
-          jbPrevious.setActionCommand("Previous page");
-          JButton jbNext = new JButton(imNext);
-          jbNext.setActionCommand("Next page");
-          JButton jbLast = new JButton(imLast);
-          jbLast.setActionCommand("Last page");
-
-          jtbPage.add(jbFirst);
-          jtbPage.add(jbPrevious);
-          jtbPage.add(jbNext);
-          jtbPage.add(jbLast);
-          jtbPage.setFloatable(false);
-          pageWork.add(jtbPage);
-
-          JComboBox<Integer> numberPage = new JComboBox<Integer>(PageConst.NUMBER_PAGE);
-          pageWork.add(numberPage);
-
-          JLabel allPageText = new JLabel("Всего страниц: ");
-          JLabel allPage = new JLabel(String.valueOf(tableView.getNumberPage()));
-          JLabel allRecordText = new JLabel("Всего записей: ");
-          JLabel allRecord = new JLabel(String.valueOf(tableView.getCountRecords()));
-
-          pageWork.add(allPageText);
-          pageWork.add(allPage);
-          pageWork.add(allRecordText);
-          pageWork.add(allRecord);
-          numberPage.addActionListener(new ChangeNumberPageListener(numberPage,tableView,allPage));
-
           mainPage.add(pageWork,BorderLayout.SOUTH);
           tableTab.add("No name",mainPage);
           tableTab.setSelectedComponent(mainPage);

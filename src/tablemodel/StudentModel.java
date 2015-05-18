@@ -1,7 +1,6 @@
 package tablemodel;
 
 import java.util.GregorianCalendar;
-import java.util.List;
 
 public class StudentModel {
     private String firstName;

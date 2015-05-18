@@ -1,17 +1,15 @@
 package tableview;
 
 import constants.PageConst;
+import edit.AdditionListener;
 import file.NewTableListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
@@ -20,7 +18,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
@@ -120,6 +117,10 @@ public class MainWindow {
         NewTableListener newTable = new NewTableListener(tableTab,jtbMain);
         jbNew.addActionListener(newTable);
         jmiCreate.addActionListener(newTable);
+
+        AdditionListener additionStudent = new AdditionListener(jfMainWin,tableTab);
+        jbtAddition.addActionListener(additionStudent);
+        jmiAddition.addActionListener(additionStudent);
 
         jfMainWin.setVisible(true);
     }

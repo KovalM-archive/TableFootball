@@ -1,28 +1,22 @@
 package file;
 
-import tablemodel.StudentTableModel;
-import tableview.StudentTableView;
+import tableview.PageWork;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ChangeNumberPageListener implements ActionListener {
-    private StudentTableView tableView;
-    private JComboBox<Integer> numberPage;
-    private JLabel allPage;
+    private PageWork pageWork;
 
-    public ChangeNumberPageListener(JComboBox<Integer> numberPage, StudentTableView tableView,JLabel allPage){
-        this.tableView = tableView;
-        this.numberPage = numberPage;
-        this.allPage = allPage;
+    public ChangeNumberPageListener(PageWork pageWork){
+        this.pageWork = pageWork;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        tableView.setNumberRecordsOnPage(numberPage.getSelectedIndex()+1);
-        tableView.goToPage(1);
-        allPage.setText(String.valueOf(tableView.getNumberPage()));
+        pageWork.getTableView().setNumberRecordsOnPage(pageWork.getNumberPage().getSelectedIndex()+1);
+        pageWork.getTableView().goToPage(1);
+        pageWork.getAllPage().setText(String.valueOf(pageWork.getTableView().getNumberPage()));
+        pageWork.getCurrentPageIndex().setText(String.valueOf(pageWork.getTableView().getIndexPage()));
     }
 }
