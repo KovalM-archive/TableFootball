@@ -27,7 +27,7 @@ public class AdditionListener implements ActionListener {
         if (e.getActionCommand().equals("Addition")){
             MainPanel mainPanel = (MainPanel)tableTab.getSelectedComponent();
             additionStudentFrame = new JDialog(mainWindow,"Addition of student",false);
-            additionStudentFrame.setSize(400, 400);
+            additionStudentFrame.setSize(400, 500);
             additionStudentFrame.setLocationRelativeTo(mainPanel);
             additionStudentFrame.setVisible(true);
             additionStudentFrame.setLayout(new BorderLayout());

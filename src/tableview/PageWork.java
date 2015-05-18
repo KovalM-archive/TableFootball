@@ -55,7 +55,7 @@ public class PageWork extends JPanel {
         add(numberPage);
 
         currentPageIndexText = new JLabel("Текущая страница: ");
-        currentPageIndex = new JLabel(String.valueOf(tableView.getIndexPage()));
+        currentPageIndex = new JLabel(String.valueOf(0));
         allPageText = new JLabel("/");
         allPage = new JLabel(String.valueOf(tableView.getNumberPage()));
         allRecordText = new JLabel("Всего записей: ");

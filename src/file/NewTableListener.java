@@ -42,13 +42,12 @@ public class NewTableListener implements ActionListener {
           jtbMain.setVisible(true);
           StudentTableModel tableModel = new StudentTableModel(new ArrayList<StudentModel>());
           StudentTableView tableView = new StudentTableView(tableModel);
-          JScrollPane scrollpane = new JScrollPane(tableView);
           PageWork pageWork = new PageWork(tableView);
           MainPanel mainPage = new MainPanel(tableView,pageWork);
-
+          mainPage.setLayout(new BorderLayout());
+          JScrollPane scrollpane = new JScrollPane(tableView);
           mainPage.add(scrollpane, BorderLayout.CENTER);
-          mainPage.add(pageWork,BorderLayout.SOUTH);
-
+          mainPage.add(pageWork, BorderLayout.SOUTH);
           tableTab.add("No name",mainPage);
           tableTab.setSelectedComponent(mainPage);
       }

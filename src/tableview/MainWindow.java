@@ -2,6 +2,7 @@ package tableview;
 
 import constants.PageConst;
 import edit.AdditionListener;
+import edit.SearchListener;
 import file.ExitMenuListener;
 import file.NewTableListener;
 import file.OpenMenuListener;
@@ -37,7 +38,7 @@ public class MainWindow {
         jfMainWin.setLayout(new BorderLayout());
 
         jfMainWin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jfMainWin.setSize(850, 500);
+        jfMainWin.setSize(800, 700);
         jfMainWin.setLocationRelativeTo(null);
 
         JMenuBar jmbMain = new JMenuBar();
@@ -134,6 +135,10 @@ public class MainWindow {
         AdditionListener additionStudent = new AdditionListener(jfMainWin,tableTab);
         jbtAddition.addActionListener(additionStudent);
         jmiAddition.addActionListener(additionStudent);
+
+        SearchListener searchStudent = new SearchListener(jfMainWin,tableTab);
+        jbtSearch.addActionListener(searchStudent);
+        jmiSearch.addActionListener(searchStudent);
 
         jfMainWin.setVisible(true);
     }
