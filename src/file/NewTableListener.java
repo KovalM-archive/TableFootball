@@ -45,8 +45,10 @@ public class NewTableListener implements ActionListener {
           JScrollPane scrollpane = new JScrollPane(tableView);
           PageWork pageWork = new PageWork(tableView);
           MainPanel mainPage = new MainPanel(tableView,pageWork);
+
           mainPage.add(scrollpane, BorderLayout.CENTER);
           mainPage.add(pageWork,BorderLayout.SOUTH);
+
           tableTab.add("No name",mainPage);
           tableTab.setSelectedComponent(mainPage);
       }

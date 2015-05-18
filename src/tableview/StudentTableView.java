@@ -77,4 +77,12 @@ public class StudentTableView extends JTable {
         calculateNumberPage();
         goToPage(tableModel.getIndexPage());
     }
+
+    public void setStudentList(List<StudentModel> studentList){
+        this.studentList = studentList;
+    }
+
+    public List<StudentModel> getStudentList(){
+        return studentList;
+    }
 }

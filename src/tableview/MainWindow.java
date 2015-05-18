@@ -2,7 +2,10 @@ package tableview;
 
 import constants.PageConst;
 import edit.AdditionListener;
+import file.ExitMenuListener;
 import file.NewTableListener;
+import file.OpenMenuListener;
+import file.SaveMenuListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -117,6 +120,16 @@ public class MainWindow {
         NewTableListener newTable = new NewTableListener(tableTab,jtbMain);
         jbNew.addActionListener(newTable);
         jmiCreate.addActionListener(newTable);
+
+        SaveMenuListener saveTable = new SaveMenuListener(tableTab);
+        jbSave.addActionListener(saveTable);
+        jmiSave.addActionListener(saveTable);
+
+        OpenMenuListener openTable = new OpenMenuListener(tableTab,jtbMain);
+        jbOpen.addActionListener(openTable);
+        jmiOpen.addActionListener(openTable);
+
+        jmiExit.addActionListener(new ExitMenuListener());
 
         AdditionListener additionStudent = new AdditionListener(jfMainWin,tableTab);
         jbtAddition.addActionListener(additionStudent);
