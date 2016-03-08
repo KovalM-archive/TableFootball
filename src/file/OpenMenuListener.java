@@ -1,5 +1,7 @@
 package file;
 
+import chooser.FileChooser;
+
 import javax.swing.JFileChooser;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
@@ -19,12 +21,13 @@ public class OpenMenuListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int result = jFileChooser.showOpenDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            if (jFileChooser.getSelectedFile().getName().contains(".xml")) {
+        FileChooser chooser = new FileChooser(System.getProperty("user.dir"));
+        chooser.showOpenDialog(null);
+        if (chooser.isSelectedFlag()) {
+            if (chooser.getSelectedFile().getName().contains(".xml")) {
                 jtbMain.setVisible(true);
                 //jtpVkladka.setTitleAt(jtpVkladka.getSelectedIndex(), jFileChooser.getSelectedFile().getName());
-                new XMLFile(jFileChooser.getSelectedFile().getPath(), tableTab).readFile(jFileChooser.getSelectedFile().getName());
+                new XMLFile(chooser.getSelectedFile().getPath(), tableTab).readFile(chooser.getSelectedFile().getName());
             }
         }
     }

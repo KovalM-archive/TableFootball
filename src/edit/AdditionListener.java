@@ -1,15 +1,11 @@
 package edit;
 
-import tableview.MainPanel;
+import tableview.TablePanel;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,15 +20,15 @@ public class AdditionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Addition")){
-            MainPanel mainPanel = (MainPanel)tableTab.getSelectedComponent();
+        if (e.getActionCommand().equals("Добавить")){
+            TablePanel tablePanel = (TablePanel)tableTab.getSelectedComponent();
             additionStudentFrame = new JDialog(mainWindow,"Addition of student",false);
             additionStudentFrame.setSize(400, 500);
-            additionStudentFrame.setLocationRelativeTo(mainPanel);
+            additionStudentFrame.setLocationRelativeTo(tablePanel);
             additionStudentFrame.setVisible(true);
             additionStudentFrame.setLayout(new BorderLayout());
 
-            AdditionDialogPanel additionDialogPanel = new AdditionDialogPanel(mainPanel);
+            AdditionDialogPanel additionDialogPanel = new AdditionDialogPanel(tablePanel);
             additionStudentFrame.add(additionDialogPanel,BorderLayout.NORTH);
         }
     }

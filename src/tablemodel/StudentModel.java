@@ -2,7 +2,7 @@ package tablemodel;
 
 import java.util.GregorianCalendar;
 
-public class StudentModel {
+public class StudentModel implements Cloneable {
     private String firstName;
     private String secondName;
     private String thirdName;
@@ -98,5 +98,18 @@ public class StudentModel {
         } else{
             return null;
         }
+    }
+
+    public StudentModel clone(){
+        StudentModel newStudent = new StudentModel();
+        newStudent.setFirstName(firstName);
+        newStudent.setSecondName(secondName);
+        newStudent.setThirdName(thirdName);
+        newStudent.setDateBirth(dateBirth);
+        newStudent.setFootballTeamName(footballTeamName);
+        newStudent.setFacultyName(facultyName);
+        newStudent.setSquad(squad);
+        newStudent.setPosition(position);
+        return newStudent;
     }
 }

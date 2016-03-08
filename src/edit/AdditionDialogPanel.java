@@ -1,9 +1,8 @@
 package edit;
 
 import com.toedter.calendar.JDateChooser;
-import constants.StudentsConst;
 import tablemodel.StudentModel;
-import tableview.MainPanel;
+import tableview.TablePanel;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,9 +17,9 @@ import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 
 public class AdditionDialogPanel extends JPanel {
-    private MainPanel mainPanel;
-    public AdditionDialogPanel(final MainPanel mainPanel){
-        this.mainPanel = mainPanel;
+    private TablePanel tablePanel;
+    public AdditionDialogPanel(final TablePanel tablePanel){
+        this.tablePanel = tablePanel;
         this.setLayout(new GridBagLayout());
 
         JLabel enterFirstNameText = new JLabel("Имя:");
@@ -63,11 +62,11 @@ public class AdditionDialogPanel extends JPanel {
                     weight = weight*10 + (int)position.charAt(i)-48;
                 }
                 currentStudent.setPosition(weight);
-                mainPanel.getTableView().addStudent(currentStudent);
-                mainPanel.getPageWork().getAllRecord().setText(
-                        String.valueOf(mainPanel.getTableView().getCountRecord()));
-                mainPanel.getPageWork().getAllPage().setText(
-                        String.valueOf(mainPanel.getTableView().getNumberPage()));
+                tablePanel.getTableView().addStudent(currentStudent);
+                tablePanel.getChangeTablePanel().getAllRecord().setText(
+                        String.valueOf(tablePanel.getTableView().getCountRecord()));
+                tablePanel.getChangeTablePanel().getAllPage().setText(
+                        String.valueOf(tablePanel.getTableView().getNumberPage()));
                 enterFirstName.setText("");
                 enterSecondName.setText("");
                 enterThirdName.setText("");

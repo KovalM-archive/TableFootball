@@ -1,15 +1,13 @@
 package file;
 
-import constants.XMLTag;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import sun.security.provider.certpath.Vertex;
 import tablemodel.StudentModel;
-import tablemodel.StudentTableModel;
-import tableview.MainPanel;
-import tableview.PageWork;
+import tableview.StudentTableModel;
+import tableview.TablePanel;
+import tableview.ChangeTablePanel;
 import tableview.StudentTableView;
 
 import javax.swing.JScrollPane;
@@ -49,8 +47,8 @@ public class XMLFile {
         rootElement = document.createElement(XMLTag.TABLE);
         document.appendChild(rootElement);
 
-        MainPanel mainPanel = (MainPanel)tableTab.getSelectedComponent();
-        StudentTableView tableView = mainPanel.getTableView();
+        TablePanel tablePanel = (TablePanel)tableTab.getSelectedComponent();
+        StudentTableView tableView = tablePanel.getTableView();
 
         List<StudentModel> students = tableView.getStudentList();
 
@@ -96,12 +94,12 @@ public class XMLFile {
             StudentTableModel tableModel = new StudentTableModel(new ArrayList<StudentModel>());
             StudentTableView tableView = new StudentTableView(tableModel);
 
-            PageWork pageWork = new PageWork(tableView);
-            MainPanel mainPage = new MainPanel(tableView, pageWork);
+            ChangeTablePanel changeTablePanel = new ChangeTablePanel(tableView);
+            TablePanel mainPage = new TablePanel(tableView, changeTablePanel);
             mainPage.setLayout(new BorderLayout());
             JScrollPane scrollpane = new JScrollPane(tableView);
             mainPage.add(scrollpane, BorderLayout.CENTER);
-            mainPage.add(pageWork, BorderLayout.SOUTH);
+            mainPage.add(changeTablePanel, BorderLayout.SOUTH);
 
             tableTab.add(nameHeader, mainPage);
             tableTab.setSelectedComponent(mainPage);
@@ -126,9 +124,9 @@ public class XMLFile {
                     tableView.addStudent(currentStudent);
                 }
             }
-            mainPage.getPageWork().getAllRecord().setText(
+            mainPage.getChangeTablePanel().getAllRecord().setText(
                     String.valueOf(mainPage.getTableView().getCountRecord()));
-            mainPage.getPageWork().getAllPage().setText(
+            mainPage.getChangeTablePanel().getAllPage().setText(
                     String.valueOf(mainPage.getTableView().getNumberPage()));
         } catch (Exception e) {
             e.printStackTrace();

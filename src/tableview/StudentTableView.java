@@ -1,7 +1,6 @@
 package tableview;
 
 import tablemodel.StudentModel;
-import tablemodel.StudentTableModel;
 
 import javax.swing.JTable;
 import java.util.ArrayList;
@@ -76,6 +75,20 @@ public class StudentTableView extends JTable {
         studentList.add(currentStudent);
         calculateNumberPage();
         goToPage(tableModel.getIndexPage());
+    }
+
+    public StudentModel getStudentAtIndex(int x){
+        if (x>=0 && x < studentList.size()){
+            return studentList.get(x);
+        } else{
+            return null;
+        }
+    }
+
+    public void removeStudent(StudentModel oldStudent){
+        studentList.remove(oldStudent);
+        calculateNumberPage();
+        goToPage(1);
     }
 
     public void setStudentList(List<StudentModel> studentList){
