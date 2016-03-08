@@ -1,3 +1,5 @@
+package tableview;
+
 import edit.AdditionListener;
 import edit.SearchDeleteListener;
 import file.ExitMenuListener;
@@ -24,7 +26,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 public class MainWindow {
-    MainWindow() {
+    public MainWindow() {
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
         } catch (UnsupportedLookAndFeelException e) {
@@ -141,14 +143,5 @@ public class MainWindow {
         jmiDelete.addActionListener(searchDeleteListener);
 
         jfMainWin.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainWindow();
-            }
-        });
     }
 }
